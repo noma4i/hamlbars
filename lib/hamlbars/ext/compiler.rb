@@ -42,6 +42,12 @@ module Hamlbars
               end
             end
 
+            if hb_escaped = attributes.delete('hb!')
+              (hb_escaped.respond_to?(:each) ? hb_escaped : [hb_escaped]).each do |expression|
+                handlebars_rendered_attributes << " {{{#{expression}}}}"
+              end
+            end
+
             # This could be generalized into /_.*/ catch-all syntax, if
             # necessary. https://github.com/jamesotron/hamlbars/pull/33
             if action = attributes.delete('_action')

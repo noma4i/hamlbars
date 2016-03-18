@@ -50,6 +50,18 @@ describe Hamlbars::Template do
     )
   end
 
+  it 'should render escaped in-tag expressions' do
+    expect(to_handlebars('%div{:hb! => \'testExpression\'}')).to eq(
+      '<div {{{testExpression}}}></div>'
+    )
+  end
+
+  it 'should render multiple escaped in-tag expressions' do
+    expect(to_handlebars('%div{:hb! => [\'firstTestExpression\', \'secondTestExpression withArgument\']}')).to eq(
+        '<div {{{firstTestExpression}}} {{{secondTestExpression withArgument}}}></div>'
+      )
+  end
+
   it "should render expressions" do
     expect(to_handlebars('= hb "hello"')).to eq(
       "{{hello}}"
