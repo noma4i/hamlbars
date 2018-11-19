@@ -28,7 +28,7 @@ describe Hamlbars::Template do
 
   it "should bind element attributes" do
     expect(to_handlebars('%img{ :bind => { :src => "logoUri" }, :alt => "Logo" }')).to eq(
-      "<img {{bind-attr src=\"logoUri\"}} alt=\'Logo\' />"
+      "<img alt=\'Logo\' {{bind-attr src=\"logoUri\"}} />"
     )
   end
 
