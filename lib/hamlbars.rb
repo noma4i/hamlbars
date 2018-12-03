@@ -13,10 +13,10 @@ module Hamlbars
   autoload :Ext,      File.join(ROOT, 'hamlbars', 'ext')
   autoload :Template, File.join(ROOT, 'hamlbars', 'template')
 
-  Haml::Compiler.send(:include, Ext::Compiler)
+  Haml::AttributeBuilder.send(:include, Ext::AttributeBuilder)
 
   if defined? Sprockets
-    Sprockets.register_engine '.hamlbars', Template
+    Sprockets.register_engine '.hamlbars', Template, silence_deprecation: true
   end
 
 end
